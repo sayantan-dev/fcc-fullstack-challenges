@@ -1,4 +1,4 @@
-🌐 **[Live Interactive Demo](https://github.io)**
+🌐 **[Live Interactive Demo](https://sayantan-dev.github.io/fcc-fullstack-challenges/01-survey-form/survey.html)
 
 # Project 01: Indian Census Simulation Survey Form
 
