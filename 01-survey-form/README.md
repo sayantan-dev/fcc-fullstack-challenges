@@ -1,6 +1,5 @@
 🌐 **[Live Interactive Demo](https://github.io)**
 
-Project link(User interface): http://127.0.0.1:5500/01-survey-form/survey.html
 # Project 01: Indian Census Simulation Survey Form
 
 A strictly validated, semantically built HTML5 form designed to satisfy 100% of the freeCodeCamp Full-Stack certification test criteria.
