@@ -21,4 +21,4 @@ D:/fcc-fullstack/02-playing-cards/
 ## 🚀 Live Environment Deployment
 The production-ready build of this showcase playground is compiled and launched to the web using automated pipeline systems. 
 
-Explore the live sandbox deployment here: **[Interactive Luxury Deck Showcase](https://github.io)**
+Explore the live sandbox deployment here: **[Interactive Luxury Deck Showcase](https://sayantan-dev.github.io/fcc-fullstack-challenges/02-playing-cards/cards.html)**
