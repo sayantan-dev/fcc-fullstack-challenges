@@ -1,3 +1,5 @@
+Page Live at: https://sayantan-dev.github.io/fcc-fullstack-challenges/03-book-inventory/inventory.html
+
 # 📚 Bespoke Dark Premium Book Inventory Archive
 
 A sophisticated, data-dense digital library archive panel built using semantic HTML5 and advanced CSS3 attribute selector engines. This project marks the successful completion of **Certification Project #3** in the freeCodeCamp Responsive Web Design curriculum, refactored from a basic passing layout into a luxury dark-mode dashboard.
