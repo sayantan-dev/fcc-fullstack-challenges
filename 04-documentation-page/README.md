@@ -1,3 +1,5 @@
+Page Live at: https://sayantan-dev.github.io/fcc-fullstack-challenges/04-documentation-page/content.html
+
 # 🏛️ Bespoke Dark Editorial HTML & CSS Documentation Hub
 
 An elegant, high-density technical publication layout engineered using semantic HTML5 structures and clean CSS3 media query engines. This project marks the successful completion of **Certification Project #4** in the freeCodeCamp Responsive Web Design curriculum, fully customized into a premium developer manual interface.
