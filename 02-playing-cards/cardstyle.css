@@ -1,0 +1,122 @@
+body{
+    background-color: #0b1a30;
+}
+
+#playing-cards{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.card{
+   display: flex;
+   justify-content: center;
+   grid-template-columns: repeat(3,280px);
+   max-width: 790px;
+   margin: 0 auto;
+   background-color: black;
+   gap: 30px;
+   padding: 40px;
+   overflow-y: auto;
+   border-radius: 12px;
+   border: 5px double goldenrod;
+   position: relative;
+   box-sizing: border-box;
+}
+
+.one,.two,.three,.four,.five{
+   width: 280px;
+   aspect-ratio: 2.5/3.5;
+   flex-shrink: 0;
+}
+
+
+.card-label, .center-art {
+    color: #d4af37;            
+    font-family: 'Georgia', serif;
+    font-weight: bold;
+}
+
+
+.card-label {
+    position: absolute;        
+    display: flex;
+    flex-direction: column;    
+    align-items: center;
+    font-size: 1.3rem;
+    line-height: 1.1;
+}
+
+/* 3. Coordinate Pinning for Corners */
+.top-left {
+    top: 12px;
+    left: 12px;
+}
+
+.bottom-right {
+    bottom: 12px;
+    right: 12px;
+    transform: rotate(180deg); 
+}
+
+
+.center-art {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); 
+    width: 50%;
+    height: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.center-art.ace {
+    font-size: 5.5rem;         
+    justify-content: center;
+}
+
+.center-art.two {
+    font-size: 3rem;           
+    justify-content: space-between;
+    padding: 10px 0;
+}
+
+.center-art.three {
+    font-size: 3rem;           
+    justify-content: space-between;
+}
+
+
+.inverted {
+    transform: rotate(180deg); 
+}
+
+
+.center-art.four-suits, 
+.center-art.five-suits {
+    font-size: 2.8rem;
+    justify-content: space-between;
+    width: 65%; 
+    height: 58%; 
+}
+
+
+.suit-pair {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between; 
+    width: 100%; 
+}
+
+
+.center-item {
+    font-size: 2.8rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+

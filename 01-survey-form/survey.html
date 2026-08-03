@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Survey Form</title>
+</head>
+<body>
+ <h1 id="title">Census Survey</h1>
+    <p id="description">The Government of India is conducting an official census count to accomodate for the total and different community wise population changes since 2011.</p>
+    <p>Please fill the form in accordance to your official registered details, note that any unverified information entered will be acted upon by the Central Bureau of Investigation.</p>
+
+    <form id="survey-form">
+        <label for="name" id="name-label">Enter your <strong>name</strong></label>
+        <input id="name" type="text" placeholder="eg. Arav Paul" required>
+
+        <label for="email" id="email-label">Enter your <strong>email id</strong><font colour="red">(required)</font></label>
+        <input id="email" type="email" placeholder="example@email.com" required>
+
+        <label for="number" id="number-label">Enter your <strong>age</strong><font colour="blue">(optional)</font></label>
+        <input id="number" type="number" min="1" max="100" placeholder="eg. 10">
+
+
+        <p>Select your <strong>religion</strong></p>
+        <select id="dropdown">
+            <option value="Hinduism">Hinduism</option>
+            <option value="Islam">Islam</option>
+            <option value="Christianity">Christianity</option>
+            <option value="Sikhism">Sikhism</option>
+            <option value="Zoroastrianism">Zoroastrianism</option>
+            <option value="Aetheist">Aetheist</option>
+            <option value="Other">Other</option>
+        </select>
+
+
+        <p>Were you included in the <strong>2011 census?</strong></p>
+        <label for="Yes">Yes</label>
+        <input type="radio" name="option" id="Yes" value="yes">
+
+         <label for="No">No</label>
+        <input type="radio" name="option" id="No" value="no">
+
+         <label for="Idk">Prefer not to say</label>
+        <input type="radio" name="option" id="Idk" value="idk">
+
+
+        <p>Select your <strong>State of domicile</strong></p>
+          <select name="state" id="state-select">
+  <option value="">--Select a State--</option>
+  <option value="AN">Andaman and Nicobar Islands</option>
+  <option value="AP">Andhra Pradesh</option>
+  <option value="AR">Arunachal Pradesh</option>
+  <option value="AS">Assam</option>
+  <option value="BR">Bihar</option>
+  <option value="CH">Chandigarh</option>
+  <option value="CG">Chhattisgarh</option>
+  <option value="DN">Dadra and Nagar Haveli and Daman and Diu</option>
+  <option value="DL">Delhi</option>
+  <option value="GA">Goa</option>
+  <option value="GJ">Gujarat</option>
+  <option value="HR">Haryana</option>
+  <option value="HP">Himachal Pradesh</option>
+  <option value="JK">Jammu and Kashmir</option>
+  <option value="JH">Jharkhand</option>
+  <option value="KA">Karnataka</option>
+  <option value="KL">Kerala</option>
+  <option value="LA">Ladakh</option>
+  <option value="LD">Lakshadweep</option>
+  <option value="MP">Madhya Pradesh</option>
+  <option value="MH">Maharashtra</option>
+  <option value="MN">Manipur</option>
+  <option value="ML">Meghalaya</option>
+  <option value="MZ">Mizoram</option>
+  <option value="NL">Nagaland</option>
+  <option value="OD">Odisha</option>
+  <option value="PY">Puducherry</option>
+  <option value="PB">Punjab</option>
+  <option value="RJ">Rajasthan</option>
+  <option value="SK">Sikkim</option>
+  <option value="TN">Tamil Nadu</option>
+  <option value="TS">Telangana</option>
+  <option value="TR">Tripura</option>
+  <option value="UP">Uttar Pradesh</option>
+  <option value="UK">Uttarakhand</option>
+  <option value="WB">West Bengal</option>
+</select>
+
+
+
+<p>Which of these <strong>Government issued documents</strong> do you possess?</p>
+<label for="a1">Adhar Card</label>
+<input type="checkbox" value="Adhar" id="a1">
+
+<label for="a2">Pan Card</label>
+<input type="checkbox" value="Pan" id="a2">
+
+<label for="a3">Passport</label>
+<input type="checkbox" value="Pass" id="a3">
+
+<label for="a4">Driving License</label>
+<input type="checkbox" value="Drive" id="a4">
+
+<label for="a5">Voter ID</label>
+<input type="checkbox" value="Voter" id="a5">
+
+
+<textarea>If you have any concerns please enter here.</textarea>
+
+
+<button type="submit" id="submit">Submit form</button>
+
+
+
+    </form>
+
+</body>
+</html>
