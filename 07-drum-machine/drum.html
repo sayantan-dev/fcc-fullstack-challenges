@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Premium MPC Drum Machine</title>
+  <link rel="stylesheet" href="keys.css">
+</head>
+<body>
+
+  <main id="drum-machine">
+    <header class="machine-header">
+      <h1>MPC-909 Engine</h1>
+      <div id="display">STANDBY</div>
+    </header>
+
+    <div class="pad-grid">
+      <button class="drum-pad" id="closed-hat">Q<audio class="clip" id="Q" src="https://sampleswap.org/samples-ghost/DRUMS%20(FULL%20KITS)/DRUM%20MACHINES/909%20Extended/9[kb]909-HiHatClosed-D4.wav.mp3"></audio></button>
+      <button class="drum-pad" id="open-hat">W<audio class="clip" id="W" src="https://sampleswap.org/samples-ghost/DRUMS%20(FULL%20KITS)/DRUM%20MACHINES/909%20Extended/21[kb]909-HiHatOpen-D0.wav.mp3"></audio></button>
+      <button class="drum-pad" id="crash-cymbal">E<audio class="clip" id="E" src="https://sampleswap.org/samples-ghost/DRUMS%20(FULL%20KITS)/DRUM%20MACHINES/606%20Basic/155[kb]606-cymbal6.wav.mp3"></audio></button>
+      
+      <button class="drum-pad" id="acoustic-snare">A<audio class="clip" id="A" src="https://sampleswap.org/samples-ghost/DRUMS%20(FULL%20KITS)/DRUM%20MACHINES/80s%20Drum%20Machine/19[kb]80s-SNARE1.wav.mp3"></audio></button>
+      <button class="drum-pad" id="electronic-snare">S<audio class="clip" id="S" src="https://sampleswap.org/samples-ghost/DRUM%20LOOPS%20and%20BREAKS/161%20to%20180%20bpm/131[kb]162_teflon-snare.wav.mp3"></audio></button>
+      <button class="drum-pad" id="rimshot">D<audio class="clip" id="D" src="https://sampleswap.org/samples-ghost/DRUM%20LOOPS%20and%20BREAKS/101%20to%20110%20bpm/96[kb]107_simple-tone-bounce.wav.mp3"></audio></button>
+      
+      <button class="drum-pad" id="punchy-kick">Z<audio class="clip" id="Z" src="https://sampleswap.org/samples-ghost/DRUMS%20(SINGLE%20HITS)/Kicks/69[kb]absolutely-insane-kikdrum.wav.mp3"></audio></button>
+      <button class="drum-pad" id="sub-kick">X<audio class="clip" id="X" src="https://sampleswap.org/samples-ghost/DRUMS%20(FULL%20KITS)/ETHNIC%20and%20WORLD%20PERCUSSION/African%20Wooden%20Drum/122[kb]African_Wooden_Drum_01_Mid_01.wav.mp3"></audio></button>
+      <button class="drum-pad" id="low-tom">C<audio class="clip" id="C" src="https://sampleswap.org/samples-ghost/DRUMS%20(FULL%20KITS)/ETHNIC%20and%20WORLD%20PERCUSSION/African%20Wooden%20Drum/103[kb]African_Wooden_Drum_08_High_02.wav.mp3"></audio></button>
+    </div>
+  </main>
+
+  <script src="operate.js"></script>
+</body>
+</html>
