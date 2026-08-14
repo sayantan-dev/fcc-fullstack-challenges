@@ -1,0 +1,93 @@
+/* Stage 3 & 4 Backgrounds: Massive Deep Dark Cosmos */
+body.stage-3, body.stage-4 {
+    background: radial-gradient(circle at center, #020208 0%, #000000 100%);
+}
+
+.cosmic-container {
+    max-width: 600px;
+    text-align: center;
+    padding: 20px;
+}
+
+.glowing-silver-universe-text {
+    color: #f8fafc;
+    font-size: 2.5rem;
+    font-weight: 300;
+    line-height: 1.4;
+    letter-spacing: 2px;
+    margin-bottom: 50px;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.4), 0 0 40px rgba(148, 163, 184, 0.2);
+    animation: textFloat 4s infinite ease-in-out;
+}
+
+@keyframes textFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.special-gold-glow {
+    border-color: #e2e8f0;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+}
+.special-gold-glow:hover {
+    background: #ffffff;
+    color: #000;
+    box-shadow: 0 0 35px rgba(255, 255, 255, 0.8);
+}
+
+/* Phase 4: Geometric Diamond Matrix */
+.diamond-artifact-container {
+    text-align: center;
+}
+
+.glowing-diamond {
+    position: relative;
+    width: 100px;
+    height: 90px;
+    margin: 0 auto 40px auto;
+    filter: drop-shadow(0 0 25px rgba(0, 229, 255, 0.85));
+    animation: spinDiamond 6s infinite linear;
+}
+
+.diamond-top {
+    width: 0; height: 0;
+    border-bottom: 40px solid #e2e8f0;
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
+}
+
+.diamond-bottom {
+    width: 0; height: 0;
+    border-top: 50px solid #cbd5e1;
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
+}
+
+@keyframes spinDiamond {
+    0% { transform: rotateY(0deg) scale(1); filter: drop-shadow(0 0 20px rgba(226, 232, 240, 0.7)); }
+    50% { transform: rotateY(180deg) scale(1.08); filter: drop-shadow(0 0 40px rgba(255, 255, 255, 0.95)); }
+    100% { transform: rotateY(360deg) scale(1); filter: drop-shadow(0 0 20px rgba(226, 232, 240, 0.7)); }
+}
+
+.diamond-caption {
+    color: #ffffff;
+    font-size: 2rem;
+    font-weight: 300;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    text-shadow: 0 0 15px rgba(255,255,255,0.5);
+}
+
+/* Structural Galaxy Starfield Background Particles */
+.galaxy-star {
+    position: absolute;
+    background: #ffffff;
+    border-radius: 50%;
+    pointer-events: none;
+    animation: starTwinkle alternate infinite ease-in-out;
+}
+
+@keyframes starTwinkle {
+    0% { opacity: 0.2; transform: scale(0.8); }
+    100% { opacity: 1; transform: scale(1.2); }
+}
