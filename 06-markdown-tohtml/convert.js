@@ -41,13 +41,13 @@ function convertMarkdown() {
     k = parseInlineToken(k, "*", "<em>", "</em>");
     k = parseInlineToken(k, "_", "<em>", "</em>");
 
-    // CRITICAL CORRECTION: Image Loop positioned FIRST to intercept '!['
+    
     while (k.includes("![") && k.includes("](") && k.includes(")")) {
       let startImg = k.indexOf("![");
       let endBrac = k.indexOf("](", startImg);
       let endParen = k.indexOf(")", endBrac);
 
-      if (startImg !== -1 && endBrac > startImg && endParen > endBrac) {
+      if (startImg !== -1 && endBrac > startImg && endParen > endBrac) { 
         let altText = k.slice(startImg + 2, endBrac);
         let srcUrl = k.slice(endBrac + 2, endParen);
         let fullImg = k.slice(startImg, endParen + 1);
@@ -58,7 +58,7 @@ function convertMarkdown() {
       }
     }
 
-    // Link Loop positioned SECOND to handle remaining general '['
+  
     while (k.includes("[") && k.includes("](") && k.includes(")")) {
       let startBrac = k.indexOf("[");
       let endBrac = k.indexOf("](");
