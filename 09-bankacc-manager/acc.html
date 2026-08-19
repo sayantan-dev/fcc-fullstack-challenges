@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Palestra Banking INC</title>
+  <link rel="preconnect" href="https://googleapis.com">
+  <link rel="preconnect" href="https://gstatic.com" crossorigin>
+  <link href="https://googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="corp.css">
+</head>
+<body>
+  <div class="terminal-container">
+    <div id="view-main-menu" class="view-panel">
+      <header class="panel-header">
+        <h1>Palestra Banking INC</h1>
+        <p class="subtitle">Private Authentic Fintech Platform</p>
+      </header>
+      <div class="menu-grid">
+        <button id="btn-goto-create" class="btn btn-primary">Create New Account</button>
+        <button id="btn-goto-delete" class="btn btn-danger-outline">Delete Existing Account</button>
+        <button id="btn-goto-atm" class="btn btn-accent">Access ATM Services</button>
+      </div>
+    </div>
+
+    <div id="view-create-account" class="view-panel hidden">
+      <header class="panel-header">
+        <h2>ACCOUNT ONBOARDING</h2>
+        <p class="subtitle">Register New Multi-Tenant Account Token</p>
+      </header>
+      <form id="form-create">
+        <div class="input-group">
+          <label for="create-name">Account Holder Name</label>
+          <input type="text" id="create-name" required placeholder="e.g., Sayantan Dey">
+        </div>
+        <div class="input-group">
+          <label for="create-email">Email Address</label>
+          <input type="email" id="create-email" required placeholder="name@domain.com">
+        </div>
+        <div class="input-group">
+          <label for="create-phone">Phone Number (Unique Transaction ID)</label>
+          <input type="tel" id="create-phone" required placeholder="10-digit number">
+        </div>
+        <div class="input-group">
+          <label for="create-pin">Secure ATM PIN (4 Digits)</label>
+          <input type="password" id="create-pin" required maxlength="4" pattern="[0-9]{4}" placeholder="••••">
+        </div>
+        <div class="action-row">
+          <button type="button" class="btn btn-secondary btn-cancel">Cancel</button>
+          <button type="submit" class="btn btn-primary">Confirm Registration</button>
+        </div>
+      </form>
+      <div id="create-message" class="status-banner"></div>
+    </div>
+
+    <div id="view-delete-account" class="view-panel hidden">
+      <header class="panel-header">
+        <h2>ACCOUNT PURGING REGISTRY</h2>
+        <p class="subtitle text-danger">Warning: This Action Irreversibly Destroys Data</p>
+      </header>
+      <form id="form-delete">
+        <div class="input-group">
+          <label for="delete-phone">Phone Number (Transaction ID)</label>
+          <input type="tel" id="delete-phone" required placeholder="Enter registered phone">
+        </div>
+        <div class="input-group">
+          <label for="delete-pin">ATM PIN</label>
+          <input type="password" id="delete-pin" required maxlength="4" placeholder="••••">
+        </div>
+        <div class="action-row">
+          <button type="button" class="btn btn-secondary btn-cancel">Cancel</button>
+          <button type="submit" class="btn btn-danger">Execute Destruction</button>
+        </div>
+      </form>
+      <div id="delete-message" class="status-banner"></div>
+    </div>
+
+    <div id="view-atm-gate" class="view-panel hidden">
+      <header class="panel-header">
+        <h2>SECURE PORTAL ENTRY</h2>
+        <p class="subtitle">Input ATM PIN to Authenticate Terminal Session</p>
+      </header>
+      <form id="form-atm-login">
+        <div class="input-group">
+          <label for="atm-login-pin">Enter ATM PIN</label>
+          <input type="password" id="atm-login-pin" required maxlength="4" placeholder="••••">
+        </div>
+        <div class="action-row">
+          <button type="button" class="btn btn-secondary btn-cancel">Cancel</button>
+          <button type="submit" class="btn btn-accent">Authenticate</button>
+        </div>
+      </form>
+      <div id="atm-login-message" class="status-banner"></div>
+    </div>
+
+    <div id="view-atm-dashboard" class="view-panel hidden">
+      <header class="panel-header dashboard-header">
+        <div>
+          <h2 id="user-greeting">WELCOME, OPERATOR</h2>
+          <p id="user-meta" class="subtitle">ID: 0000000000</p>
+        </div>
+        <button id="btn-logout" class="btn btn-danger-outline btn-sm">Secure Log Out</button>
+      </header>
+
+      <div class="dashboard-grid">
+        <div class="card balance-card">
+          <h3>AVAILABLE BALANCE</h3>
+          <div id="display-balance" class="balance-amount">$0.00</div>
+        </div>
+
+        <div class="card operations-card">
+          <h3>OPERATIONS HUB</h3>
+          <div class="op-buttons">
+            <button id="btn-op-deposit" class="btn btn-secondary">Deposit Funds</button>
+            <button id="btn-op-withdraw" class="btn btn-secondary">Withdraw Funds</button>
+            <button id="btn-op-transfer" class="btn btn-secondary">Funds Transfer</button>
+            <button id="btn-op-history" class="btn btn-secondary">View History</button>
+          </div>
+        </div>
+      </div>
+
+      <div id="atm-form-box" class="card hidden">
+        <h4 id="atm-form-title">OPERATION ACTIVE</h4>
+        
+        <form id="form-atm-deposit" class="atm-sub-form hidden">
+          <div class="input-group">
+            <label for="deposit-amount">Deposit Amount ($)</label>
+            <input type="number" id="deposit-amount" step="0.01" min="0.01" required placeholder="0.00">
+          </div>
+          <div class="action-row">
+            <button type="button" class="btn btn-secondary btn-close-op">Abort</button>
+            <button type="submit" class="btn btn-success">Confirm Deposit</button>
+          </div>
+        </form>
+
+        <form id="form-atm-withdraw" class="atm-sub-form hidden">
+          <div class="input-group">
+            <label for="withdraw-amount">Withdrawal Amount ($)</label>
+            <input type="number" id="withdraw-amount" step="0.01" min="0.01" required placeholder="0.00">
+          </div>
+          <div class="action-row">
+            <button type="button" class="btn btn-secondary btn-close-op">Abort</button>
+            <button type="submit" class="btn btn-danger">Execute Withdrawal</button>
+          </div>
+        </form>
+
+        <form id="form-atm-transfer" class="atm-sub-form hidden">
+          <div class="input-group">
+            <label for="transfer-recipient">Recipient Phone Number (Transaction ID)</label>
+            <input type="tel" id="transfer-recipient" required placeholder="Recipient 10-digit number">
+          </div>
+          <div class="input-group">
+            <label for="transfer-amount">Transfer Amount ($)</label>
+            <input type="number" id="transfer-amount" step="0.01" min="0.01" required placeholder="0.00">
+          </div>
+          <div class="action-row">
+            <button type="button" class="btn btn-secondary btn-close-op">Abort</button>
+            <button type="submit" class="btn btn-primary">Authorize Transfer</button>
+          </div>
+        </form>
+
+        <div id="console-history" class="atm-sub-form hidden">
+          <pre id="history-log-output"></pre>
+          <div class="action-row">
+            <button type="button" class="btn btn-secondary btn-close-op">Close Terminal Output</button>
+          </div>
+        </div>
+
+        <div id="atm-op-message" class="status-banner"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="manage.js"></script>
+</body>
+</html>
