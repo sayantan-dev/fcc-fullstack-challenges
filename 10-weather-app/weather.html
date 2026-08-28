@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tempestas.in</title>
+    <link rel="stylesheet" href="scheme.css">
+</head>
+<body>
+    <!-- Persistent Ambient Dynamic Canvas Layer -->
+    <div id="ambient-canvas" class="canvas-matrix">
+        <div class="cloud-layer layer-1"></div>
+        <div class="cloud-layer layer-2"></div>
+        <div class="rain-matrix"></div>
+        <div class="sun-flare"></div>
+    </div>
+
+    <div id="mainframe-container" class="app-card">
+        <header class="app-header">
+            <h1 class="title">TEMPESTAS</h1>
+            <p class="subtitle">WEATHER OF TODAY</p>
+        </header>
+
+        <section class="control-module">
+            <div class="select-wrapper">
+                <select id="city-select">
+                    <option value="" disabled selected>SELECT STATION ARCHIVE...</option>
+                    <option value="new york">New York</option>
+                    <option value="los angeles">Los Angeles</option>
+                    <option value="chicago">Chicago</option>
+                    <option value="paris">Paris</option>
+                    <option value="tokyo">Tokyo</option>
+                    <option value="london">London</option>
+                    <option value="kolkata">Kolkata</option>
+                </select>
+            </div>
+            <button id="get-weather-btn" type="button">View Weather Statistics</button>
+        </section>
+
+        <!-- Dynamic Loader Module -->
+        <div id="mainframe-loader" class="loader-box hidden">
+            <div class="spinner"></div>
+            <span class="loader-text">ESTABLISHING DATALINK...</span>
+        </div>
+
+        <!-- Metric Grid Display Frame -->
+        <main id="weather-display" class="display-mainframe hidden">
+            <div class="display-header">
+                <div class="header-text-block">
+                    <span class="system-tag">// LOCATION SPECIFICATION REGISTER</span>
+                    <h2 id="location">--</h2>
+                </div>
+            </div>
+            
+            <div class="metrics-grid">
+                <!-- Temperature Card -->
+                <div class="metric-card gold-accent-border">
+                    <div class="card-title-block">
+                        <svg class="mini-icon icon-thermometer" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z" />
+                            <path class="mercury-line" d="M11.5 6v7" />
+                        </svg>
+                        <span class="label">TEMPERATURE</span>
+                    </div>
+                    <span class="value" id="main-temperature">--</span>
+                </div>
+
+                <!-- Feels Like Card -->
+                <div class="metric-card">
+                    <div class="card-title-block">
+                        <svg class="mini-icon icon-thermal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2v20M17 5H7M19 12H5M17 19H7"/>
+                        </svg>
+                        <span class="label">FEELS LIKE</span>
+                    </div>
+                    <span class="value" id="feels-like">--</span>
+                </div>
+
+                <!-- Conditions Card -->
+                <div class="metric-card">
+                    <div class="card-title-block">
+                        <svg class="mini-icon icon-condition" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2v2M4.22 4.22l1.42 1.42M1 12h2M4.22 19.78l1.42-1.42M12 20v2M18.36 19.78l-1.42-1.42M21 12h2M18.36 4.22l-1.42 1.42M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10z"/>
+                        </svg>
+                        <span class="label">CONDITIONS</span>
+                    </div>
+                    <span class="value" id="weather-main">--</span>
+                </div>
+
+                <!-- Humidity Card -->
+                <div class="metric-card">
+                    <div class="card-title-block">
+                        <svg class="mini-icon icon-droplet" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 22a7 7 0 0 0 7-7c0-4.3-7-13-7-13S5 10.7 5 15a7 7 0 0 0 7 7z" />
+                        </svg>
+                        <span class="label">HUMIDITY</span>
+                    </div>
+                    <span class="value" id="humidity">--</span>
+                </div>
+
+                <!-- Wind Speed Card -->
+                <div class="metric-card">
+                    <div class="card-title-block">
+                        <svg class="mini-icon icon-tornado" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path class="wind-line-1" d="M19 4H5M17 9H7M21 14H3M15 19H9" />
+                        </svg>
+                        <span class="label">WIND SPEED</span>
+                    </div>
+                    <span class="value" id="wind">--</span>
+                </div>
+
+                <!-- Wind Gust Card -->
+                <div class="metric-card">
+                    <div class="card-title-block">
+                        <svg class="mini-icon icon-gust" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path class="wind-line-2" d="M2 4h16a3 3 0 0 1 0 6H2M5 14h12a3 3 0 0 1 0 6H5" />
+                        </svg>
+                        <span class="label">WIND GUST</span>
+                    </div>
+                    <span class="value" id="wind-gust">--</span>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="stats.js"></script>
+</body>
+</html>

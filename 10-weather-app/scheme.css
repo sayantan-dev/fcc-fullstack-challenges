@@ -1,0 +1,325 @@
+/* Black & Gold Structural Parameter Mapping Layout */
+:root {
+    --pure-black: #000000;
+    --matte-black: #0A0A0A;
+    --coal-black: #121212;
+    --deep-gold: #C5A059;
+    --bright-gold: #E5C17D;
+    --gold-glow: rgba(197, 160, 89, 0.12);
+    --gold-border: rgba(197, 160, 89, 0.25);
+    --text-primary: #FFFFFF;
+    --text-muted: #888888;
+    --font-mono: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--pure-black);
+    color: var(--text-primary);
+    font-family: var(--font-mono);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 24px;
+    /* FIX 1: Released hidden overflow block to enable complete vertical scrolling */
+    overflow-y: auto; 
+    position: relative;
+}
+
+/* --- THE AMBIENT WEATHER CANVAS ENGINE (REALISTIC BACKGROUND LANDSCAPES) --- */
+.canvas-matrix {
+    position: fixed; /* FIX 2: Swapped to fixed to keep landscape fluid across entire view height */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0; /* Layer underneath the dashboard interface */
+    transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none;
+    background: #000000; /* Baseline default canvas container background */
+}
+
+/* Realistic Landscape States mapped by JS body attributes */
+body[data-scene="clear"] .canvas-matrix {
+    background: linear-gradient(to bottom, #091524 0%, #152238 50%, #000000 100%) !important;
+}
+body[data-scene="clear"] .sun-flare {
+    position: absolute;
+    top: 10%;
+    right: 15%;
+    width: 280px;
+    height: 280px;
+    background: radial-gradient(circle, rgba(229, 193, 125, 0.15) 0%, rgba(197, 160, 89, 0.02) 60%, transparent 100%);
+    border-radius: 50%;
+    animation: pulseGlow 6s infinite alternate ease-in-out;
+}
+
+body[data-scene="clouds"] .canvas-matrix {
+    background: linear-gradient(to bottom, #161a22 0%, #232936 60%, #05070a 100%) !important;
+}
+body[data-scene="clouds"] .cloud-layer {
+    position: absolute;
+    width: 200%;
+    height: 100%;
+    top: 0;
+    background-repeat: repeat-x;
+    opacity: 0.25;
+}
+body[data-scene="clouds"] .layer-1 {
+    background-image: radial-gradient(circle at 20% 25%, #3d4554 0%, transparent 40%), radial-gradient(circle at 65% 40%, #2a303d 0%, transparent 45%);
+    animation: driftClouds 35s linear infinite;
+}
+body[data-scene="clouds"] .layer-2 {
+    background-image: radial-gradient(circle at 45% 15%, #1e222b 0%, transparent 35%), radial-gradient(circle at 85% 30%, #4a5466 0%, transparent 38%);
+    animation: driftClouds 20s linear infinite reverse;
+}
+
+body[data-scene="rain"] .canvas-matrix {
+    background: linear-gradient(to bottom, #06090f 0%, #10151f 70%, #000000 100%) !important;
+}
+body[data-scene="rain"] .rain-matrix {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(197, 160, 89, 0.08) 70%, rgba(255,255,255,0) 100%);
+    background-size: 3px 150px;
+    background-repeat: repeat;
+    animation: downpour 0.3s linear infinite;
+    opacity: 0.8;
+}
+
+/* --- INTERFACE MAINFRAME LAYOUT (BLACK & GOLD PLATFORM) --- */
+#mainframe-container {
+    background-color: rgba(10, 10, 10, 0.85); /* Slightly transparent to let animations bleed through */
+    width: 100%;
+    max-width: 580px;
+    border: 1px solid var(--gold-border);
+    border-radius: 8px;
+    padding: 40px;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.95);
+    z-index: 10; /* Keeps dashboard on top of the fixed background landscape */
+    position: relative;
+    backdrop-filter: blur(8px); /* Real-time premium backdrop blur filtering effect */
+    margin: auto 0;
+}
+
+.app-header {
+    margin-bottom: 36px;
+    text-align: center;
+    border-bottom: 1px solid var(--gold-border);
+    padding-bottom: 20px;
+}
+
+.title {
+    font-size: 2.2rem;
+    font-weight: 900;
+    letter-spacing: 6px;
+    color: var(--deep-gold);
+    text-shadow: 0 0 15px var(--gold-glow);
+}
+
+.subtitle {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    letter-spacing: 3px;
+    margin-top: 4px;
+}
+
+.control-module {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 36px;
+}
+
+.select-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+#city-select {
+    width: 100%;
+    background-color: var(--pure-black);
+    border: 1px solid var(--gold-border);
+    border-radius: 4px;
+    padding: 16px;
+    color: var(--bright-gold);
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    outline: none;
+    cursor: pointer;
+    appearance: none;
+    text-align-last: center;
+    transition: all 0.3s ease;
+}
+
+#city-select:focus {
+    border-color: var(--bright-gold);
+    box-shadow: 0 0 15px var(--gold-glow);
+}
+
+#get-weather-btn {
+    background-color: transparent;
+    color: var(--bright-gold);
+    border: 1px solid var(--deep-gold);
+    border-radius: 4px;
+    padding: 16px;
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: 0.85rem;
+    cursor: pointer;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#get-weather-btn:hover {
+    background-color: var(--deep-gold);
+    color: var(--pure-black);
+    box-shadow: 0 0 20px rgba(197, 160, 89, 0.4);
+}
+
+#get-weather-btn:active {
+    transform: scale(0.98);
+}
+
+/* Dynamic Loading Container */
+.loader-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    padding: 30px 0;
+}
+
+.spinner {
+    width: 24px;
+    height: 24px;
+    border: 2px solid var(--coal-black);
+    border-top-color: var(--bright-gold);
+    border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+}
+
+.loader-text {
+    font-size: 0.7rem;
+    color: var(--deep-gold);
+    letter-spacing: 2px;
+}
+
+/* Metric Registry Presentation Panel */
+.display-mainframe {
+    animation: revealFrame 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.display-header {
+    text-align: left;
+    margin-bottom: 28px;
+}
+
+.system-tag {
+    font-size: 0.6rem;
+    color: var(--deep-gold);
+    display: block;
+    margin-bottom: 4px;
+    letter-spacing: 1px;
+}
+
+#location {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    letter-spacing: 1px;
+}
+
+.metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+}
+
+.metric-card {
+    background-color: var(--coal-black);
+    border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 4px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    transition: border-color 0.3s;
+}
+
+.gold-accent-border {
+    border-left: 2px solid var(--deep-gold);
+}
+
+.card-title-block {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.metric-card .label {
+    font-size: 0.65rem;
+    color: var(--text-muted);
+    letter-spacing: 1px;
+}
+
+.metric-card .value {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--bright-gold);
+}
+
+/* --- VECTOR HEADINGS TEXT ANIMATIONS --- */
+.mini-icon {
+    width: 18px;
+    height: 18px;
+    stroke: var(--deep-gold);
+    flex-shrink: 0;
+}
+
+.icon-thermometer .mercury-line {
+    animation: mercuryExpansion 2s infinite alternate ease-in-out;
+    stroke-dasharray: 8;
+}
+
+.icon-thermal {
+    animation: flashBreathe 3s infinite ease-in-out;
+}
+
+.icon-condition {
+    animation: spin 12s linear infinite;
+}
+
+.icon-droplet {
+    animation: fluidFloat 2.5s infinite alternate ease-in-out;
+}
+
+.icon-tornado .wind-line-1 {
+    animation: driftWind 1.2s infinite linear;
+}
+.icon-gust .wind-line-2 {
+    animation: driftWind 0.8s infinite linear reverse;
+}
+
+/* --- KEYFRAME TIMELINES --- */
+@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes pulseGlow { from { opacity: 0.4; transform: scale(0.97); } to { opacity: 0.7; transform: scale(1.03); } }
+@keyframes driftClouds { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+@keyframes downpour { from { background-position: 0 0; } to { background-position: -20px 500px; } }
+@keyframes revealFrame { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes mercuryExpansion { from { stroke-dashoffset: 8; } to { stroke-dashoffset: 0; } }
+@keyframes flashBreathe { 0%, 100% { opacity: 0.5; } 50% { opacity: 1; stroke-width: 2.3; } }
+@keyframes fluidFloat { from { transform: translateY(1.5px); } to { transform: translateY(-2.5px); } }
+@keyframes driftWind { from { stroke-dashoffset: 20; stroke-dasharray: 4, 16; } to { stroke-dashoffset: 0; stroke-dasharray: 16, 4; } }
