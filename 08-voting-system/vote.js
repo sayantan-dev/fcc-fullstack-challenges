@@ -11,7 +11,7 @@ function addOption(option) {
     }
     if(option === ""){
         return `Option cannot be empty.`;
-    }
+    }0
     return `Option "${option}" already exists.`;
 }
 
