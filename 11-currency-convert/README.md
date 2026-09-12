@@ -1,5 +1,6 @@
 # Moneta Conversions 🧬
 
+(Page Live at https://sayantan-dev.github.io/fcc-fullstack-challenges/)
 A premium, high-performance financial dashboard engineered with **React** and compiled via **Vite** [September 2026]. Moving past standard vanilla setups, this application is built using a declarative component architecture and structural memory controls to provide microsecond response rates.
 
 ## 🎨 Architectural Design Framework
