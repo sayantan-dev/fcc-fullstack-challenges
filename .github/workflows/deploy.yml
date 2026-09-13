@@ -1,4 +1,4 @@
-name: Compile and Deploy Vite App to GitHub Pages
+name: Compile and Deploy Multi-Project Suite to GitHub Pages
 
 on:
   push:
@@ -19,16 +19,38 @@ jobs:
         with:
           node-version: 20
           cache: "npm"
-          cache-dependency-path: 11-currency-convert/package-lock.json
+          cache-dependency-path: |
+            11-currency-convert/package-lock.json
+            12-tictac-game/package-lock.json
 
-      - name: Compile Production Build Assets
+      # 💵 ASSET 1: COMPILE THE EMERALD CURRENCY CONVERTER
+      - name: Build Currency Converter
         run: |
           cd 11-currency-convert
           npm ci
           npm run build
+          cd ..
 
-      - name: Stream Distribution Folder to GitHub Pages
+      # 🕹️ ASSET 2: COMPILE THE CYBERPUNK TIC-TAC-TOE ARENA
+      - name: Build Tic-Tac-Toe Game
+        run: |
+          cd 12-tictac-game
+          npm ci
+          npm run build
+          cd ..
+
+      # 🏗️ INTEGRATION MATRIX: ORCHESTRATE PRODUCTION DISTRIBUTIONS
+      - name: Organize Deployment Directory Structure
+        run: |
+          mkdir -p final-deploy
+          # Copies Currency Converter to the absolute root of deployment branch
+          cp -r 11-currency-convert/dist/* final-deploy/
+          # Safely nests the Tic-Tac-Toe Arcade inside its own isolated sub-folder URL path
+          mkdir -p final-deploy/12-tictac-game
+          cp -r 12-tictac-game/dist/* final-deploy/12-tictac-game/
+
+      - name: Stream Optimized Assets to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          folder: 11-currency-convert/dist
+          folder: final-deploy
           branch: gh-pages

@@ -1,0 +1,176 @@
+/* 🧬 CORE CYBERPUNK NEON VARIABLE DEFINITIONS */
+:root {
+  --bg-gradient: radial-gradient(circle at center, #0d0b18 0%, #04020a 100%);
+  --neon-blue: #00f0ff;
+  --neon-purple: #bd00ff;
+  --neon-green: #39ff14;
+  --neon-gold: #ffb800;
+  --text-main: #f3f4f6;
+  --font-display: "Orbitron", "Segoe UI", system-ui, sans-serif;
+}
+
+/* 🖼️ CENTERING EMBED MATRIX CONTAINER */
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background: var(--bg-gradient);
+  color: var(--text-main);
+  font-family: var(--font-display);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+/* 🧱 THE FULL VERTICAL LAYOUT FRAME */
+.game-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 500px;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* 🏛️ GLOWING BLUE TITLE CARD */
+.game-title {
+  font-size: 2.8rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  margin: 0 0 10px 0;
+  color: #ffffff;
+  text-align: center;
+  /* Premium Cyan Glow Matrix */
+  text-shadow:
+    0 0 5px #00f0ff,
+    0 0 10px #00f0ff,
+    0 0 20px #00f0ff,
+    0 0 40px #00f0ff;
+}
+
+/* 📊 NEON STATUS ENGINE DISPLAY */
+#game-status {
+  margin-bottom: 25px;
+  font-size: 1.3rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--text-main);
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+  transition: all 0.3s ease;
+}
+
+/* Dynamic status modifications based on game states */
+.status-winner {
+  color: var(--neon-green) !important;
+  text-shadow: 0 0 12px var(--neon-green) !important;
+}
+
+.status-draw {
+  color: var(--neon-blue) !important;
+  text-shadow: 0 0 12px var(--neon-blue) !important;
+}
+
+/* 🏢 THE GLOWING PURPLE 3x3 MATRIX GRID ENGINE */
+.board-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 110px);
+  grid-template-rows: repeat(3, 110px);
+  gap: 12px; /* Distinct grid separator spacing */
+  background: rgba(189, 0, 255, 0.05);
+  padding: 16px;
+  border-radius: 16px;
+  /* Intense Purple Core Border Glow */
+  border: 2px solid var(--neon-purple);
+  box-shadow:
+    0 0 15px rgba(189, 0, 255, 0.2),
+    inset 0 0 15px rgba(189, 0, 255, 0.2);
+}
+
+/* 🎛️ INDIVIDUAL GRID ARENA SQUARES */
+.square {
+  background: rgba(20, 15, 35, 0.6);
+  border: 1px solid rgba(189, 0, 255, 0.3);
+  border-radius: 8px;
+  cursor: pointer;
+  outline: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: inset 0 0 8px rgba(189, 0, 255, 0.1);
+}
+
+.square:hover {
+  background: rgba(189, 0, 255, 0.15);
+  border-color: var(--neon-purple);
+  box-shadow: 0 0 10px rgba(189, 0, 255, 0.4);
+  transform: scale(1.03);
+}
+
+/* 🟢 THE GLOWING GREEN POP ANIMATION FOR PLAYERS */
+.text-x,
+.text-o {
+  color: var(--neon-green);
+  font-size: 2.5rem;
+  font-weight: 900;
+  text-shadow:
+    0 0 8px var(--neon-green),
+    0 0 15px var(--neon-green);
+}
+
+/* Scale pop animation triggered on state mutation */
+.pop-active {
+  animation: neonPop 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  border-color: var(--neon-green) !important;
+  box-shadow: 0 0 15px rgba(57, 255, 20, 0.4) !important;
+}
+
+@keyframes neonPop {
+  0% {
+    transform: scale(0.6);
+    background: rgba(57, 255, 20, 0.1);
+  }
+  100% {
+    transform: scale(1);
+    background: rgba(20, 15, 35, 0.6);
+  }
+}
+
+/* 🪙 METALLIC GOLD RESET CONTROLS */
+#reset {
+  margin-top: 30px;
+  padding: 14px 28px;
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  color: var(--neon-gold);
+  background: transparent;
+  border: 2px solid var(--neon-gold);
+  border-radius: 8px;
+  outline: none;
+  transition: all 0.2s ease;
+  box-shadow: 0 0 8px rgba(255, 184, 0, 0.1);
+}
+
+#reset:hover {
+  color: #04020a;
+  background: var(--neon-gold);
+  box-shadow:
+    0 0 15px var(--neon-gold),
+    0 0 25px rgba(255, 184, 0, 0.4);
+  transform: translateY(-2px);
+}
+
+#reset:active {
+  transform: translateY(0);
+  box-shadow: 0 0 8px var(--neon-gold);
+}
